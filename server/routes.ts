@@ -40,6 +40,7 @@ export default function setRoutes(app) {
   // Golfclubs
   app.route('/api/golfclubs').get(golfclubCtrl.getAll);
   app.route('/api/golfclubs/count').get(golfclubCtrl.count);
+  app.route('/api/golfclubs/getfee').get(golfclubCtrl.getFee);
   app.route('/api/golfclub').post(golfclubCtrl.insert);
   app.route('/api/golfclub/:id').get(golfclubCtrl.get);
   app.route('/api/golfclub/:id').put(golfclubCtrl.update);

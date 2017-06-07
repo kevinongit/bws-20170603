@@ -7,7 +7,7 @@ import { ShopService } from './shop.service';
     styleUrls: ['./style.css']
 })
 export class ShopComponent {
-    constructor(private shopService:ShopService) {
+    constructor(public shopService:ShopService) {
         
     }
 }

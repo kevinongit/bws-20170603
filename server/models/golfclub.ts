@@ -22,4 +22,14 @@ const golfclubSchema = new mongoose.Schema({
 
 const Golfclub = mongoose.model('Golfclub', golfclubSchema);
 
+const feeInfoSchema = new mongoose.Schema({
+    gc_id: String,
+    month: String,
+    mon_fee: String,
+    weekday: String,
+    holiday: String
+});
+
+const FeeInfo = mongoose.model('FeeInfo', feeInfoSchema);
+
 export default Golfclub;

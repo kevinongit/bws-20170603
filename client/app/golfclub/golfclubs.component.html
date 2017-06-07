@@ -2,17 +2,39 @@
 
 <app-toast [message]="toast.message"></app-toast>
 
+
+
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
+<script type="text/javascript">
+  WebFont.load({
+ 
+    // For google fonts
+    google: {
+      families: ['Droid Sans', 'Droid Serif']
+    },
+    // For early access or custom font
+    custom: {
+        families: ['Nanum Gothic'],
+        urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
+    }
+ 
+  });
+</script>
+
+
 <div class="card" *ngIf="!isLoading">
   <h4 class="card-header"> 검색된 골프장 수 ({{golfclubs.length}} 개)</h4>
   <div class="card-block">
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
+<!--
         <tr>
           <th>이름</th>
           <th>주소</th>
           <th>설명</th>
           <th>변경</th>
         </tr>
+-->
       </thead>
       <tbody *ngIf="golfclubs.length === 0">
         <tr>
@@ -21,13 +43,76 @@
       </tbody>
       <tbody *ngIf="!isEditing">
         <tr *ngFor="let golfclub of golfclubs">
+        <td>
+<table border="0" width="100%">
+<tbody border="0">
+<tr>
+<td>
+<table width="100%" border="0">
+<tbody border="0">
+<tr>
+<td width="60"><img src="100" alt="" width="50" height="50" /></td>
+<td colspan="3">
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td>{{golfclub.name}}</td>
+</tr>
+<tr>
+<td>{{golfclub.address}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 퍼블릭18홀이상</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="4">
+<table width="100%" class="table_fee">
+<tr class="tr_fee">
+<td class="td_fee" style="text-align: center;" colspan="2">6월할인캐디피</td>
+<td class="td_fee" style="text-align: center;">월요일</td>
+<td class="td_fee" style="text-align: center;">화~금요일</td>
+<td class="td_fee" style="text-align: center;">토요일</td>
+<td class="td_fee" style="text-align: center;">일요일</td>
+</tr>
+<tr class="tr_fee">
+<td class="td_fee" style="text-align: center;">1부</td>
+<td class="td_fee" style="text-align: center;">6:22~7:22</td>
+<td class="td_fee" style="text-align: center;">70,000</td>
+<td class="td_fee" style="text-align: center;">80,000</td>
+<td class="td_fee" style="text-align: center;">190,000</td>
+<td class="td_fee" style="text-align: center;">170,000</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="middle" style="height: 40px; ">
+<td colspan="4" style="vertical-align: middle;">캐디비 120,000원 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;카트비 80,000원(4인기준)</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 100%; border: 0px solid black;">
+  <tr  >
+    <th style="background-color:white;">&nbsp;</th>
+  </tr>
+</table>
+
+        </td>
+<!--
           <td>{{golfclub.name}}</td>
           <td>{{golfclub.address}}</td>
           <td>{{golfclub.desc}}</td>
+-->
+<!--
           <td>
             <button class="btn btn-sm btn-warning" (click)="enableEditing(golfclub)"><i class="fa fa-pencil"></i> </button> 
             <button class="btn btn-sm btn-danger" (click)="deleteGolfclub(golfclub)"><i class="fa fa-trash"></i> </button>
           </td>
+-->
         </tr>  
       </tbody>
       <tbody *ngIf="isEditing">
