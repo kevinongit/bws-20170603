@@ -1,0 +1,72 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header"> 검색된 골프장 수 ({{golfclubs.length}} 개)</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>이름</th>
+          <th>주소</th>
+          <th>설명</th>
+          <th>변경</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="golfclubs.length === 0">
+        <tr>
+          <td colspan="4">골프장이 존재하지 않습니다. 아래에서 신규로 생성 해주세요.</td>
+        </tr>  
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let golfclub of golfclubs">
+          <td>{{golfclub.name}}</td>
+          <td>{{golfclub.address}}</td>
+          <td>{{golfclub.desc}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(golfclub)"><i class="fa fa-pencil"></i> </button> 
+            <button class="btn btn-sm btn-danger" (click)="deleteGolfclub(golfclub)"><i class="fa fa-trash"></i> </button>
+          </td>
+        </tr>  
+      </tbody>
+      <tbody *ngIf="isEditing">
+        <tr>
+          <td colspan="4">
+            <form class="form-inline" #form="ngForm" (ngSubmit)="editGolfclub(golfclub)" style="display:inline">
+              <div class="form-group">
+                  <input class="form-control" type="text" name="name" [(ngModel)]="golfclub.name" placeholder="골프장 이름" required>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="address" [(ngModel)]="golfclub.address" placeholder="골프장 주소" required>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="desc" [(ngModel)]="golfclub.desc" placeholder="설명" step="any" required>
+              </div>
+              <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> 저장 </button>
+            </form>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> 취소 </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isEditing">
+  <h4 class="card-header">골프장 추가</h4>
+  <div class="card-block">
+    <form class="form-inline" [formGroup]="addGolfclubForm" (ngSubmit)="addGolfclub()" style="text-align:center">
+      <div class="form-group">
+          <input class="form-control" type="text" name="name" formControlName="name" placeholder="이름">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="address" formControlName="address" placeholder="주소">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="desc" formControlName="desc" placeholder="설명" step="any">
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!addGolfclubForm.valid"><i class="fa fa-floppy-o"></i> 추가 </button>
+    </form>
+  </div>
+</div>

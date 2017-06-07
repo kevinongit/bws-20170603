@@ -2,13 +2,19 @@ import * as express from 'express';
 
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
+import MovieCtrl from './controllers/movie';
+import GolfclubCtrl from './controllers/golfclub';
+
 import Cat from './models/cat';
 import User from './models/user';
+
 
 export default function setRoutes(app) {
 
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
+  const movieCtrl = new MovieCtrl();
+  const golfclubCtrl = new GolfclubCtrl();
 
   // Cats
   app.route('/api/cats').get(catCtrl.getAll);
@@ -27,4 +33,15 @@ export default function setRoutes(app) {
   app.route('/api/user/:id').put(userCtrl.update);
   app.route('/api/user/:id').delete(userCtrl.delete);
 
+  // movie
+  app.route('/api/movie').get(movieCtrl.getAll);
+  app.route('/api/movie/:id').get(movieCtrl.getOneMovie);
+
+  // Golfclubs
+  app.route('/api/golfclubs').get(golfclubCtrl.getAll);
+  app.route('/api/golfclubs/count').get(golfclubCtrl.count);
+  app.route('/api/golfclub').post(golfclubCtrl.insert);
+  app.route('/api/golfclub/:id').get(golfclubCtrl.get);
+  app.route('/api/golfclub/:id').put(golfclubCtrl.update);
+  app.route('/api/golfclub/:id').delete(golfclubCtrl.delete);
 }
