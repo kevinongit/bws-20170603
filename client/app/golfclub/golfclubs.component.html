@@ -51,7 +51,7 @@
 	<tr>
 		<td><table class="table" style="background-color: #f5f5f5;">
 			<tr>
-				<td style="font-size: 140%;padding:0px;">{{golfclub.name}} <a class="btn" href="#"> <i class="fa fa-home"></i> 홈페이지</a>{{golfclub.homepage}}</td>
+				<td style="font-size: 140%;padding:0px;">{{golfclub.name}} <a class="btn" href="{{golfclub.homepage}}"> <i class="fa fa-home"></i> 홈페이지</a>{{golfclub.homepage}}</td>
 			</tr>
 			<tr>
 				<td style="font-size: 90%; color:#666;padding:0px;">{{golfclub.address}}<br><font style="font-size: 80%;">퍼블릭18홀이상</font></td>
@@ -83,7 +83,7 @@
 				<td style="font-size: 140%;padding:0px;"><a href="{{golfclub.homepage}}">할인그린피보러가기</a>{{golfclub.homepage}}</td>
 			</tr>
 -->
-			<tr><td style="color:#666; font-size:76%">캐디비 120,000원<br>카트비 80,000원(4인기준)</td></tr></table>
+			<tr><td style="color:#666; font-size:76%">캐디비 {{golfclub.fee_caddy}}원<br>카트비 {{golfclub.fee_cart}}원 </td></tr></table>
 			<br>
 <!-- 			</pre> -->
 </td>
