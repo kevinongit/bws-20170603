@@ -11,6 +11,7 @@ import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
 import { GolfclubsComponent } from './golfclub/golfclubs.component';
+import { GolfclubsPagination } from './golfclub/golfclubs-pagination';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -44,6 +45,7 @@ import { BoxofficeModule } from './boxoffice/boxoffice.module';
     AuthGuardAdmin,
     CatService,
     GolfclubService,
+    GolfclubsPagination,
     UserService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

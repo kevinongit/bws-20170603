@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import * as _ from 'lodash';
 
 import { GolfclubService } from '../services/golfclub.service';
+import { GolfclubsPagination } from './golfclubs-pagination';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -14,6 +16,8 @@ export class GolfclubsComponent implements OnInit {
 
   golfclub = {};
   golfclubs = [];
+  pagedGolfclubs = [];
+  pager:any = {};
   isLoading = true;
   isEditing = false;
 
@@ -23,6 +27,7 @@ export class GolfclubsComponent implements OnInit {
   desc = new FormControl('', Validators.required);
 
   constructor(private golfclubService: GolfclubService,
+              private golfclubsPagination: GolfclubsPagination,
               private formBuilder: FormBuilder,
               private http: Http,
               public toast: ToastComponent) { }
@@ -38,10 +43,28 @@ export class GolfclubsComponent implements OnInit {
 
   getGolfclubs() {
     this.golfclubService.getGolfclubs().subscribe(
-      data => this.golfclubs = data,
+      data => { 
+        this.golfclubs = data;
+        // initialize to page 1
+        this.setPage(1);
+      },
       error => console.log(error),
       () => this.isLoading = false
     );
+  }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      console.log("setPage constrict (page:" + page + ")");
+      return;
+    }
+
+    // get pager objedct object from service
+    this.pager = this.golfclubsPagination.getPager(this.golfclubs.length, page);
+    console.log("this.pager.pages.length = " + this.pager.pages.length);
+    // get current page of items
+    this.pagedGolfclubs = this.golfclubs.slice(this.pager.startIndex, this.pager.endIndex+1);
+    console.log("pagedGolfclubs.length = " + this.pagedGolfclubs.length);
   }
 
   addGolfclub() {
