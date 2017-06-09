@@ -11,11 +11,15 @@ const golfclubSchema = new mongoose.Schema({
   uid: String,
   area: String,
   classification: String,
-  fee_cart: Number,
-  fee_caddy: Number,
+  fee_cart: String,
+  fee_caddy: String,
+  fee_monday: String,
+  fee_weekday: String,
+  fee_weekend: String,
   homePage: String,
   map_level: String,
   fee_url: String,
+  dcfee_urls: [{type: String}],
   desc: String,
   updated: Date
 });
