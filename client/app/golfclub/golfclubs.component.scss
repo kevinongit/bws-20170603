@@ -2068,6 +2068,7 @@ pre code {
 }
 table {
   background-color: transparent;
+  color:#696969;
 }
 th {
   text-align: center;
@@ -6216,7 +6217,15 @@ button.close {
 
 
 
+.row {
+  width: 100%;
+/*   text-align: center; // center the content of the container */
+}
 
+.block {
+  width: 100px;
+  display: inline-block; // display inline with abality to provide width/height
+}
 
 
 
