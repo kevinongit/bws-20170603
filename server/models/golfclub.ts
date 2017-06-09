@@ -16,7 +16,7 @@ const golfclubSchema = new mongoose.Schema({
   fee_monday: String,
   fee_weekday: String,
   fee_weekend: String,
-  homePage: String,
+  homepage: String,
   map_level: String,
   fee_url: String,
   dcfee_urls: [{type: String}],
