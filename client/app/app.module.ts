@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
 import { GolfclubsComponent } from './golfclub/golfclubs.component';
 import { GolfclubsPagination } from './golfclub/golfclubs-pagination';
+import { SearchFilter } from './golfclub/search-filter.pipe';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +27,7 @@ import { BoxofficeModule } from './boxoffice/boxoffice.module';
     AppComponent,
     CatsComponent,
     GolfclubsComponent,
+    SearchFilter,
     AboutComponent,
     RegisterComponent,
     LoginComponent,

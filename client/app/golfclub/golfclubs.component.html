@@ -34,7 +34,9 @@
         </tr>  
       </tbody>
       <tbody *ngIf="!isEditing">
-        <tr *ngFor="let golfclub of pagedGolfclubs">
+        <label> 검색 </label> <input #search (keyup)="doSearch(search.value)">
+
+        <tr *ngFor="let golfclub of pagedGolfclubs ">
           <td>
 
 

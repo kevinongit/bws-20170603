@@ -53,6 +53,16 @@ export class GolfclubsComponent implements OnInit {
     );
   }
 
+  doSearch(keyword: string) {
+    console.log('doSearch : ' + keyword);
+    this.pagedGolfclubs = this.golfclubs.filter(item => {
+      if (item["name"].includes(keyword)) { return true; }
+      return false;
+    });
+    console.log('this.pagedGolfclus.length = ' + this.pagedGolfclubs.length);
+    // this.setPage(1);
+  }
+
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       console.log("setPage constrict (page:" + page + ")");
