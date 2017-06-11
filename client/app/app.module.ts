@@ -6,6 +6,7 @@ import { CatService } from './services/cat.service';
 import { GolfclubService } from './services/golfclub.service'
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { GaService } from './services/ga.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
@@ -47,6 +48,7 @@ import { BoxofficeModule } from './boxoffice/boxoffice.module';
     AuthGuardAdmin,
     CatService,
     GolfclubService,
+    GaService,
     GolfclubsPagination,
     UserService
   ],
