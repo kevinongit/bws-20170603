@@ -34,8 +34,18 @@
         </tr>  
       </tbody>
       <tbody *ngIf="!isEditing">
-        <label> 검색 </label> <input #search (keyup)="doSearch(search.value)">
+        <tr style="height:60px; width:100%"><td style="text-align:center;">
 
+<div class="form-group" style="width:80%; text-align: center; margin-left: auto ;margin-right: auto;">
+    <div class="input-group" style="text-align: center">
+            <span class="input-group-addon"><span class="glyphicon">검색</span></span>
+
+        <input type="text" class="form-control" aria-describedby="start-date" placeholder="골프장명을 입력하세요." #search (keyup)="doSearch(search.value)">
+    </div>
+</div>
+
+
+        <td></td></tr>
         <tr *ngFor="let golfclub of pagedGolfclubs ">
           <td>
 
@@ -84,24 +94,28 @@
             <!-- 			</pre> -->
           </td>
         </tr>  
-        <!-- pager -->
-        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <tr><td align="center">
+	        
+	        <!-- pager -->
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination" style="font-size:80%;">
             <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(1)">First</a>
+                <a (click)="setPage(1)">처음</a>
             </li>
             <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                <a (click)="setPage(pager.currentPage - 1)">이전</a>
             </li>
-            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" style="font-size:80%;">
                 <a (click)="setPage(page)">{{page}}</a>
             </li>
             <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                <a (click)="setPage(pager.currentPage + 1)">다음</a>
             </li>
             <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.totalPages)">Last</a>
+                <a (click)="setPage(pager.totalPages)">마지막</a>
             </li>
         </ul>
+	        
+        </td></tr>
       </tbody>
       <tbody *ngIf="isEditing">
         <tr>
