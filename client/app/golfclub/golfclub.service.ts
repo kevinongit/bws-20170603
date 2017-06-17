@@ -24,8 +24,12 @@ export class GolfclubService {
     return this.http.post('/api/golfclub', JSON.stringify(golfclub), this.options);
   }
 
-  getGolfclub(golfclub): Observable<any> {
-    return this.http.get(`/api/golfclub/${golfclub._id}`).map(res => res.json());
+  // getGolfclub(golfclub): Observable<any> {
+  //   return this.http.get(`/api/golfclub/${golfclub._id}`).map(res => res.json());
+  // }
+
+  getGolfclub(_id): Observable<any> {
+    return this.http.get(`/api/golfclub/${_id}`).map(res => res.json());
   }
 
   editGolfclub(golfclub): Observable<any> {

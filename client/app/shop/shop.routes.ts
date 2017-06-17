@@ -29,9 +29,6 @@ export const routes: Routes =  [
             // { path: 'childOne', component: ChildOneComponent }
         ]
     },
-
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

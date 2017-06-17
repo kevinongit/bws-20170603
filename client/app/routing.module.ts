@@ -16,16 +16,19 @@ import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 
 const routes: Routes = [
-  { path: '', component: AboutComponent },
+  // { path: '', component: AboutComponent },
+  { path: '', redirectTo: '/golfclubs', pathMatch: 'full'},
   { path: 'shop', component: ShopComponent },
   { path: 'boxoffice', component: BoxofficeComponent },
   { path: 'cats', component: CatsComponent },
-  { path: 'golfclubs', component: GolfclubsComponent },
+  // { path: 'golfclubs', component: GolfclubsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] }
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
