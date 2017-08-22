@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import * as _ from 'lodash';
 
-import { GolfclubService } from '../services/golfclub.service';
+import { GolfclubService } from './golfclub.service';
 import { GolfclubsPagination } from './golfclubs-pagination';
+
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -30,6 +32,7 @@ export class GolfclubsComponent implements OnInit {
               private golfclubsPagination: GolfclubsPagination,
               private formBuilder: FormBuilder,
               private http: Http,
+              private router: Router,
               public toast: ToastComponent) { }
 
   ngOnInit() {
@@ -124,6 +127,11 @@ export class GolfclubsComponent implements OnInit {
         error => console.log(error)
       );
     }
+  }
+
+  onSelect(golfclub) {
+    console.log('onSelect : '+ golfclub._id);
+    this.router.navigate(['/golfclub', golfclub._id]);
   }
 
 }
